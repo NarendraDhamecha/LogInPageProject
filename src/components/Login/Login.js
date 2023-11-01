@@ -7,11 +7,14 @@ import Input from "../UI/Input/Input";
 
 const emailReducer = (state, action) => {
   if (action.type === "USER_INPUT") {
-    return { value: action.value, isValid: action.value.includes("@") };
+    return {
+      value: action.value,
+      isValid: action.value.includes("@gmail.com"),
+    };
   }
 
   if (action.type === "INPUT_BLUR") {
-    return { value: state.value, isValid: state.value.includes("@") };
+    return { value: state.value, isValid: state.value.includes("@gmail.com") };
   }
 
   return { value: "", isValid: null };
@@ -108,7 +111,7 @@ const Login = (props) => {
           value={passwordState.value}
           onChange={passwordChangeHandler}
           onBlur={validatePasswordHandler}
-        /> 
+        />
         <div className={classes.actions}>
           <Button type="submit" className={classes.btn} disabled={!formIsValid}>
             Login
